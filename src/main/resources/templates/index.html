@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type = "text/javascript" th:src = "@{/js/action.js}"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <style>
@@ -93,11 +95,11 @@
         <p class="w3-large">
         <p><div class="w3-code cssHigh notranslate">
         body {<br>
-            background-color: #d0e4fe;<br>}<br>h1 {<br>
-            color: orange;<br>
-            text-align: center;<br>}<br>p {<br>
-            font-family: "Times New Roman";<br>
-            font-size: 20px;<br>}
+        background-color: #d0e4fe;<br>}<br>h1 {<br>
+        color: orange;<br>
+        text-align: center;<br>}<br>p {<br>
+        font-family: "Times New Roman";<br>
+        font-size: 20px;<br>}
     </div>
         <a class="w3-button w3-theme w3-hover-white" href="/css/tryit.asp?filename=trycss_default" target="_blank">Try it Yourself</a>
     </div>
@@ -110,10 +112,10 @@
 
         <p><div class="w3-code jsHigh notranslate">
         // Click the button to change the color of this paragraph<br><br>function myFunction() {<br>
-            var x;<br>
-            x = document.getElementById("demo");<br>
-            x.style.fontSize = "25px"; <br>
-            x.style.color = "red"; <br>}
+        var x;<br>
+        x = document.getElementById("demo");<br>
+        x.style.fontSize = "25px"; <br>
+        x.style.color = "red"; <br>}
     </div>
         <a class="w3-button w3-theme w3-hover-white" href="/js/tryit.asp?filename=tryjs_default" target="_blank">Try it Yourself</a>
     </div>
