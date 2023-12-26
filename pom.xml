@@ -111,6 +111,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>p5</finalName>
 	</build>
 
 </project>

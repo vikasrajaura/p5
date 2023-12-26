@@ -1,0 +1,40 @@
+############ Docker Notes ##############
+# build docker image from dockerfile
+	docker build -t myJavaApp .
+# list all images
+	docker image ls -a
+	docker images
+# remove docker image
+	docker rmi <image-id>
+# run container from image:doc
+	docker run -itd -p 8081:80 docker/welcome-to-docker
+	docker run -itd -p 8081:80 docker/welcome-to-docker:latest
+# list all containers
+	docker container ls -a
+	docker ps -a
+# stop a container
+	docker stop <container-id>
+# start a stopped container
+	docker start <container-id>
+# remove container
+	docker rm <container-id>
+# enter inside container
+	docker attach <container-id>
+# exit from attached container, so that it will not stop and run in background
+	ctrl+p, ctrl+q
+
+
+
+
+##### Commands to run on docker #######
+## video reffered -- https://www.youtube.com/watch?v=3fALfjlkfuU
+# pull postgres image
+    docker pull postgres
+# run postgres container
+    docker run -d -p 5432:5432 -e POSTGRES_PASSWORD=vik -e POSTGRES_USER=postgres -e POSTGRES_DB=postgres -v C:\postgres_container_data:/var/lib/postgresql/data --name=postgres_con postgres
+# Create docker image
+    docker build -t p5-docker_img .
+# Run docker image in docker container
+    docker run -d -p 8090:8080 --name=p5_con p5-docker_img
+# to see logs of container
+    docker logs p5_con
