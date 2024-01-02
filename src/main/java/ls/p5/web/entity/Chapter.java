@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import java.util.HashSet;
 import java.util.Map;
@@ -29,6 +31,7 @@ public class Chapter {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "CHAPTER_TOPIC_MAP", joinColumns = @JoinColumn(name = "CHAPTER_ID"), inverseJoinColumns = @JoinColumn(name = "TOPIC_ID"))
+    @Fetch(FetchMode.SUBSELECT)
     private Set<Topic> topics = new HashSet<>();
 
 }
