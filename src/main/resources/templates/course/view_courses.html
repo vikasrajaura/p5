@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>View Courses</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type = "text/javascript" th:src = "@{/js/action.js}"></script>
+<link rel = "stylesheet" th:href = "@{/css/default.css}">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<style>
+
+    .w3-padding-top-8{padding-top:8px!important}
+    .w3-padding-top-16{padding-top:16px!important}
+
+    .w3-padding-top-24{padding-top:24px!important}
+    .w3-padding-top-32{padding-top:32px!important}
+    .w3-padding-top-64{padding-top:64px!important}
+    .w3-padding-top-48{padding-top:48px!important}
+
+    .w3-padding-bottom-8{padding-bottom:8px!important}
+    .w3-padding-bottom-16{padding-bottom:16px!important}
+    .w3-padding-tiny{padding:2px 4px!important}
+
+</style>
+<body>
+
+<!-- Top header-->
+<div th:replace="fragments/header-sidebar :: header"> </div>
+
+
+<!-- Sidebar -->
+<div th:replace="fragments/header-sidebar :: sidebar"> </div>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay " onclick="w3_close()" style="cursor:pointer" title="close side menu" id="main-overlay"></div>
+
+
+<!-- Main content -->
+<div class="w3-main w3-container" style="margin-top:53px;">
+
+    <h6 class="w3-padding-small">Courses designed by our subject professionals</h6>
+
+    <div class="w3-panel w3-card-4 w3-theme-l4 w3-padding-bottom-16" style="padding:8px" th:each="course: ${courses}">
+        <div class="w3-padding-tiny">
+            <h5 class="w3-theme-l2 w3-padding-small" th:text="${course.name}"></h5>
+        </div>
+
+        <div class="w3-third w3-padding-tiny" th:each="subject: ${course.subjects}">
+            <div style="" class="w3-card w3-container w3-theme-l5">
+                <h5 th:text="${subject.name}"></h5>
+                <ol class="w3-ul w3-tiny">
+                        <li th:each="chapter: ${subject.chapters}" th:text="${chapter.name}" />
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+      <!-- footer -->
+    <div th:replace="fragments/footer :: footer"> </div>
+    <!-- END MAIN -->
+</div>
+
+
+
+<script src="https://www.w3schools.com/lib/w3codecolor.js"></script>
+<script>    w3CodeColor(); </script>
+
+</body>
+</html>
