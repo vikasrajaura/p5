@@ -61,7 +61,7 @@
         </div>
         <div id="menuFx" class="myMenu w3-bar-block" style="display:none">
             <div class="w3-container">
-                <h3>Functions</h3>
+                <h3>Bookmarks</h3>
             </div>
             <a class="w3-bar-item w3-button" href='/tags/default.asp'>HTML Tag Reference</a>
             <a class="w3-bar-item w3-button" href='/colors/default.asp'>HTML Color Reference</a>
@@ -73,11 +73,9 @@
 <!-- Overlay effect when opening sidebar on small screens -->
 <div class="w3-overlay " onclick="w3_close1()" style="cursor:pointer" title="close side menu" id="content-overlay"></div>
 
-<div class="" style="display: inline; position:fixed; opacity: 0.7; margin-top: 14px;" >
-    <a class="w3-button w3-left w3-xlarge w3-hide-large w3-circle" style="background-color: lemonchiffon; " href="javascript:void(0)" onclick="w3_open1()" title="Close Menu">&#8667;</a>
+<div class="" style="display: inline; position:fixed; opacity: 0.6; margin-top: 12px;" >
+    <a class="w3-button w3-left w3-xlarge w3-hide-large w3-circle w3-theme-action" style="background-color: lemonchiffon; " href="javascript:void(0)" onclick="w3_open1()" title="Close Menu">&#8667;</a>
 </div>
-
-
 
 
 <!-- Main content -->
@@ -95,6 +93,7 @@
         <a href="/js/default.asp" class="w3-button w3-theme w3-hover-white">LEARN JS</a>
         <a href="/jsref/default.asp" class="w3-button w3-theme w3-hover-white">JS REFERENCE</a>
     </div>
+
 
     <!-- footer -->
     <div th:replace="fragments/footer :: footer"> </div>
