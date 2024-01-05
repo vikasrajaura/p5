@@ -1,4 +1,4 @@
-package ls.p5.web.controller;
+package ls.p5.web.course.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,4 +19,9 @@ public class MyTestController {
         return "index";
     }
 
+    @GetMapping("/viewChapterTopics")
+    public String viewChapterTopics(Model model){
+        model.addAttribute("msg", "Hi welcome to Thymeleaf");
+        return "course/view_chapterTopics";
+    }
 }

@@ -1,4 +1,4 @@
-package ls.p5.web.service;
+package ls.p5.web.course.service;
 
 import java.io.Serializable;
 import java.util.Collection;

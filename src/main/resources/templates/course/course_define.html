@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>View Courses</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type = "text/javascript" th:src = "@{/js/action.js}"></script>
+<link rel = "stylesheet" th:href = "@{/css/default.css}">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<body>
+    <!-- Top header-->
+    <div th:replace="fragments/header-sidebar :: header"> </div>
+
+
+    <!-- Sidebar -->
+    <div th:replace="fragments/header-sidebar :: sidebar"> </div>
+    <!-- Overlay effect when opening sidebar on small screens -->
+    <div class="w3-overlay " onclick="w3_close()" style="cursor:pointer" title="close side menu" id="main-overlay"></div>
+
+
+
+
+    <!-- Main content -->
+    <div class="w3-container">
+        <h2>Active Tabs</h2>
+        <p>To highlight the current tab/page the user is on, add a color class, and use JavaScript to update the active link.</p>
+
+        <div class="w3-bar w3-theme-l4">
+            <button class="w3-bar-item w3-button tablink w3-theme-l2" onclick="openCity(event,'London')">London</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Paris')">Paris</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event,'Tokyo')">Tokyo</button>
+        </div>
+
+        <div id="London" class="w3-container w3-border city">
+            <h2>London</h2>
+            <p>London is the capital city of England.</p>
+        </div>
+
+        <div id="Paris" class="w3-container w3-border city" style="display:none">
+            <h2>Paris</h2>
+            <p>Paris is the capital of France.</p>
+        </div>
+
+        <div id="Tokyo" class="w3-container w3-border city" style="display:none">
+            <h2>Tokyo</h2>
+            <p>Tokyo is the capital of Japan.</p>
+        </div>
+    </div>
+
+
+
+
+    <script src="https://www.w3schools.com/lib/w3codecolor.js"></script>
+    <script> w3CodeColor(); </script>
+</body>
+</html>

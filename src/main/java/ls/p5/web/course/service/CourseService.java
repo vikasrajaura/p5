@@ -1,7 +1,7 @@
-package ls.p5.web.service;
+package ls.p5.web.course.service;
 
-import ls.p5.web.entity.Course;
-import ls.p5.web.repository.ICourseRepository;
+import ls.p5.web.course.entity.Course;
+import ls.p5.web.course.repository.ICourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

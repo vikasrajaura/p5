@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<title>View Courses</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type = "text/javascript" th:src = "@{/js/action.js}"></script>
+<link rel = "stylesheet" th:href = "@{/css/default.css}">
+<link rel = "stylesheet" th:href = "@{/css/w3.css}">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+<body>
+<!-- Top header-->
+<div th:replace="fragments/header-sidebar :: header"> </div>
+
+
+<!-- Sidebar -->
+<div th:replace="fragments/header-sidebar :: sidebar"> </div>
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay " onclick="w3_close()" style="cursor:pointer" title="close side menu" id="main-overlay"></div>
+
+
+
+
+<!-- Main content -->
+<div class="w3-main w3-container" style="margin-top:53px;">
+    <h6 class="w3-padding-small">Courses designed by our subject professionals</h6>
+    <div class="w3-panel w3-card-4 w3-theme-l4 w3-padding-bottom-16" style="padding:8px" >
+        <div class="w3-padding-tiny">
+            <h5 class="w3-theme-l2 w3-padding-small" >Course List</h5>
+        </div>
+
+        <table class="ws-table-all w3-striped w3-hoverable" style="width:100%" id="coursesListTable">
+            <tbody>
+                <tr class="w3-theme-l2">
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                <tr th:each="course: ${courses}">
+                    <td th:text="${course.courseId}" />
+                    <td th:text="${course.name}" />
+                    <td th:text="${course.description}" />
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Add Course" class="w3-btn w3-border w3-border-green w3-round-xlarge w3-theme-l5 w3-left" onclick="document.getElementById('newCourse').style.display='block'"/>
+    </div>
+
+
+    <div class="w3-panel w3-card-4 w3-padding-bottom-16" style="padding:8px" >
+        <div class="w3-padding-tiny">
+            <h5 class="w3-theme-l2 w3-padding-small" >Add Course</h5>
+        </div>
+        <form th:action="@{/course/saveCourse}" th:object="${course}" method="post" class="w3-container">
+            <input type="text" class="w3-input" id="courseId"  th:field = "*{courseId}" placeholder="Enter course id" />
+            <input type="text" class="w3-input" id="name" th:field = "*{name}" placeholder="Enter course name" />
+            <input type="text" class="w3-input" id="description" th:field = "*{description}" placeholder="Enter course description" />
+            <br/>
+            <input type="submit" value="Save" />
+        </form>
+    </div>
+
+
+
+
+    <!-- popup add course form-->
+    <div id="newCourse" class="w3-modal">
+            <div class="w3-panel w3-card-4 w3-padding-bottom-16 w3-modal-content w3-animate-zoom" style="padding:8px" >
+                <div class="w3-padding-tiny">
+                    <h5 class="w3-theme-l2 w3-padding-small ">Add Course
+                        <a class="w3-right" href="javascript:void(0)" onclick="document.getElementById('newCourse').style.display='none'">
+                            <i class="material-icons" >close</i>
+                        </a>
+                    </h5>
+                </div>
+                <form th:action="@{/course/saveCourse}" th:object="${course}" method="post" class="w3-container">
+                    <input type="text" class="w3-input" id="courseId"  th:field = "*{courseId}" placeholder="Enter course id" />
+                    <input type="text" class="w3-input" id="name" th:field = "*{name}" placeholder="Enter course name" />
+                    <input type="text" class="w3-input" id="description" th:field = "*{description}" placeholder="Enter course description" />  <br/>
+
+                    <input type="submit" value="Save" class="w3-btn w3-border w3-border-green w3-round-xlarge w3-theme-l4 w3-left"/>
+                    <input type="reset" value="Reset" class="w3-btn w3-border w3-border-green w3-round-xlarge w3-theme-l4 w3-left w3-margin-left">
+
+                    <button type="button" class="w3-btn w3-border w3-border-green w3-round-xlarge w3-theme-l4 w3-right" onclick="document.getElementById('newCourse').style.display='none'" > Close </button>
+
+                </form>
+            </div>
+    </div>
+    <!-- popup add course form end-->
+
+
+
+
+    <!-- footer -->
+    <div th:replace="fragments/footer :: footer"> </div>
+</div>
+
+
+
+
+<script src="https://www.w3schools.com/lib/w3codecolor.js"></script>
+<script> w3CodeColor(); </script>
+<script>
+
+    function addRow() {
+
+       let table = document.getElementById("coursesListTable");
+
+       let row = table.insertRow(-1); // We are adding at the end
+
+       // Create table cells
+       let c1 = row.insertCell(0);
+       let c2 = row.insertCell(1);
+       let c3 = row.insertCell(2);
+
+       // Add data to c1 and c2
+       c1.innerText = "Elon"
+       c2.innerText = 45
+       c3.innerText = "Houston"
+    }
+</script>
+</body>
+</html>

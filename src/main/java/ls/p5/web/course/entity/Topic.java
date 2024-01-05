@@ -1,4 +1,4 @@
-package ls.p5.web.entity;
+package ls.p5.web.course.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

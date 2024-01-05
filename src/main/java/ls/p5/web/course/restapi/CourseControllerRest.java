@@ -1,9 +1,9 @@
-package ls.p5.web.restapi;
+package ls.p5.web.course.restapi;
 
 import jakarta.validation.Valid;
-import ls.p5.web.entity.Course;
+import ls.p5.web.course.entity.Course;
 import ls.p5.web.excepion.ResourceNotFoundException;
-import ls.p5.web.service.ICourseService;
+import ls.p5.web.course.service.ICourseService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;

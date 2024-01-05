@@ -1,10 +1,11 @@
-package ls.p5.web.controller;
+package ls.p5.web.course.controller;
 
 import jakarta.validation.Valid;
-import ls.p5.web.entity.Course;
-import ls.p5.web.service.ICourseService;
+import ls.p5.web.course.entity.Course;
+import ls.p5.web.course.service.ICourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping
+@RequestMapping("/course")
 public class CourseController {
 
     /* Messages constants */
@@ -44,11 +45,11 @@ public class CourseController {
     public static final String DELETE_ENTITIES = "/deleteCourses";
 
     /* return view names */
-    public static final String VW_ADD_ENTITY_FORM = "course/add_course";
-    public static final String VW_EDIT_ENTITY_FORM = "course/edit_course";
-    public static final String VW_EDIT_ENTITIES_FORM = "course/edit_courses";
-    public static final String VW_VIEW_ENTITIES =  "course/view_courses";
-    public static final String VW_VIEW_ENTITY = "course/view_course";
+    public static final String VW_ADD_ENTITY_FORM = "course/course/add_course";
+    public static final String VW_EDIT_ENTITY_FORM = "course/course/edit_course";
+    public static final String VW_EDIT_ENTITIES_FORM = "course/course/edit_courses";
+    public static final String VW_VIEW_ENTITIES =  "course/course/view_courses";
+    public static final String VW_VIEW_ENTITY = "course/course/view_course";
 
     @Autowired
     ICourseService courseService;
@@ -61,7 +62,7 @@ public class CourseController {
     }
 
     @RequestMapping(value = { SAVE_ENTITY }, method = RequestMethod.POST)
-    public ModelAndView saveEntity(@Valid @ModelAttribute Course entity, BindingResult result) {
+    public ModelAndView saveEntity(@Valid @ModelAttribute("course") Course entity, BindingResult result) {
         ModelAndView mv = new ModelAndView(VW_ADD_ENTITY_FORM);
         if (result.hasErrors()) {
             mv.addObject(MSG_ERROR, result);
@@ -69,9 +70,9 @@ public class CourseController {
         }
 
         courseService.save(entity);
-        mv = new ModelAndView(VW_VIEW_ENTITY);
+        mv = new ModelAndView(VW_VIEW_ENTITIES);
         mv.addObject(MSG_SUCCESS, ENTITY_SUCCESSFULLY_SAVED);
-        mv.addObject(S_ENTITY, entity);
+        mv.addObject(S_ENTITIES, courseService.findAll());
 
         return mv;
     }
@@ -126,10 +127,11 @@ public class CourseController {
     }
 
     @RequestMapping(value = { VIEW_ENTITIES }, method = RequestMethod.GET)
-    public ModelAndView viewEntities() {
+    public ModelAndView viewEntities(@ModelAttribute Course entity) {
         ModelAndView mv = new ModelAndView(VW_VIEW_ENTITIES);
         List<Course> entities = courseService.findAll();
         mv.addObject(S_ENTITIES, entities);
+        mv.addObject("course", entity);
         return mv;
     }
 
@@ -151,6 +153,12 @@ public class CourseController {
     @RequestMapping(value = { DELETE_ENTITIES }, method = RequestMethod.GET)
     public ModelAndView deleteEntities() {
         ModelAndView mv = new ModelAndView(VW_VIEW_ENTITY);
+        return mv;
+    }
+
+    @RequestMapping(value = { "/defineCourse" }, method = RequestMethod.GET)
+    public ModelAndView defineCourse() {
+        ModelAndView mv = new ModelAndView("course/course_define");
         return mv;
     }
 }

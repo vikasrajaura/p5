@@ -1,4 +1,4 @@
-package ls.p5.web.entity;
+package ls.p5.web.course.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,20 +8,19 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "COURSE")
-public class Course {
+@Table(name = "SUBJECT")
+public class Subject {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "COURSE_ID")
-    private Long courseId;
+    @Column(name = "SUBJECT_ID")
+    private Long subjectId;
 
     @Column(name = "NAME", nullable = false, length = 500)
     private String name;
@@ -30,8 +29,7 @@ public class Course {
     private String description;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "course_subject_map", joinColumns = @JoinColumn(name = "COURSE_ID"), inverseJoinColumns = @JoinColumn(name = "SUBJECT_ID"))
+    @JoinTable(name = "SUBJECT_CHAPTER_MAP", joinColumns = @JoinColumn(name = "SUBJECT_ID"), inverseJoinColumns = @JoinColumn(name = "CHAPTER_ID"))
     @Fetch(FetchMode.SUBSELECT)
-    private Set<Subject> subjects = new HashSet<>();
-
+    private Set<Chapter> chapters = new HashSet<>();
 }
